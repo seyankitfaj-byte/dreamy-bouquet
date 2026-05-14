@@ -1,45 +1,45 @@
-let current = 1;
+let page = 1;
 
-const pages = {
-  2: "I don’t know how to explain it… but you feel like home to me. Every word you say stays in my mind longer than it should.",
-  3: "I remember the small moments… the laughs, the silence, the way everything felt lighter when you were around.",
-  4: "No matter where life takes us, I hope you find happiness. And if destiny allows… maybe we meet again someday."
+const text = {
+  2: "I don’t know how to explain it… but you feel like home. Everything becomes lighter when I think of you.",
+  3: "I remember the small moments… your smile, your voice, the silence that somehow felt warm with you.",
+  4: "No matter where life takes us, I hope you find happiness. And if destiny allows it… we meet again."
 };
 
-function showPage(num) {
-  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
-  document.getElementById("page" + num).classList.add("active");
+function show(p) {
+  document.querySelectorAll(".page").forEach(e => e.classList.remove("active"));
+  document.getElementById("p" + p).classList.add("active");
 
-  current = num;
+  page = p;
 
-  if (pages[num]) typeText("text" + num, pages[num]);
+  if (text[p]) type("t" + p, text[p]);
 
   burstHearts();
 }
 
 function nextPage() {
-  if (current < 4) showPage(current + 1);
+  if (page < 4) show(page + 1);
 }
 
 function restart() {
-  showPage(1);
+  show(1);
 }
 
-/* TYPING EFFECT */
-function typeText(id, text) {
+/* TYPE EFFECT */
+function type(id, txt) {
   const el = document.getElementById(id);
   el.innerHTML = "";
   let i = 0;
 
-  function typing() {
-    if (i < text.length) {
-      el.innerHTML += text.charAt(i);
+  function run() {
+    if (i < txt.length) {
+      el.innerHTML += txt[i];
       i++;
-      setTimeout(typing, 25);
+      setTimeout(run, 20);
     }
   }
 
-  typing();
+  run();
 }
 
 /* HEARTS */
@@ -58,9 +58,8 @@ function heart() {
 
 setInterval(heart, 250);
 
-/* BURST EFFECT */
 function burstHearts() {
-  for (let i = 0; i < 8; i++) {
-    setTimeout(heart, i * 100);
+  for (let i = 0; i < 6; i++) {
+    setTimeout(heart, i * 80);
   }
 }

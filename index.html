@@ -1,70 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cinematic Love Letter 💌</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Premium Love Letter 💌</title>
 
-  <link rel="stylesheet" href="style.css"/>
+<link rel="stylesheet" href="style.css"/>
 
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
 <div class="hearts"></div>
 
-<!-- PAGE 1 -->
-<section class="page active" id="page1">
-  <div class="bg">
-    <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7" />
-  </div>
+<div class="app">
 
-  <div class="center">
-    <div class="envelope" onclick="nextPage()">
-      <div class="flap"></div>
-      <div class="icon">💌</div>
+  <!-- PAGE 1 -->
+  <section class="page active" id="p1">
+    <div class="bg">
+      <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7">
     </div>
 
-    <h1>Open My Letter</h1>
-    <button onclick="nextPage()">Open</button>
-  </div>
-</section>
+    <div class="center">
+      <div class="card">
+        <div class="envelope" onclick="nextPage()">
+          <div class="flap"></div>
+          <div class="icon">💌</div>
+        </div>
 
-<!-- PAGE 2 -->
-<section class="page" id="page2">
-  <div class="content card">
-    <img src="https://images.unsplash.com/photo-1529634895607-4d3c6f7c8c1b"/>
-    <h2>Dear You 💖</h2>
-    <p id="text2"></p>
-    <button onclick="nextPage()">Next ➜</button>
-  </div>
-</section>
-
-<!-- PAGE 3 -->
-<section class="page" id="page3">
-  <div class="split">
-    <div class="left card">
-      <h2>Memories 💭</h2>
-      <p id="text3"></p>
-      <button onclick="nextPage()">Next ➜</button>
+        <h1>Open My Letter</h1>
+        <input id="name" placeholder="Enter your name">
+        <button onclick="nextPage()">Open Letter</button>
+      </div>
     </div>
+  </section>
 
-    <div class="right">
-      <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"/>
+  <!-- PAGE 2 -->
+  <section class="page" id="p2">
+    <div class="card glass">
+      <img src="https://images.unsplash.com/photo-1529634895607-4d3c6f7c8c1b">
+      <h2>Dear <span id="user">You</span></h2>
+      <p id="t2"></p>
+      <button onclick="nextPage()">Next</button>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- PAGE 4 -->
-<section class="page" id="page4">
-  <div class="final">
-    <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b"/>
-    <h2>Final Message 💌</h2>
-    <p id="text4"></p>
-    <button onclick="restart()">Replay 💖</button>
-  </div>
-</section>
+  <!-- PAGE 3 -->
+  <section class="page" id="p3">
+    <div class="split">
+
+      <div class="card glass">
+        <h2>Memories 💭</h2>
+        <p id="t3"></p>
+        <button onclick="nextPage()">Next</button>
+      </div>
+
+      <div class="imgBox">
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PAGE 4 -->
+  <section class="page" id="p4">
+    <div class="card glass centerText">
+      <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b">
+      <h2>Final Message 💖</h2>
+      <p id="t4"></p>
+      <button onclick="restart()">Replay</button>
+    </div>
+  </section>
+
+</div>
 
 <script src="script.js"></script>
 </body>
