@@ -2,95 +2,70 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Virtual Love Letter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Virtual Love Letter 💌</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"/>
 
-  <link rel="stylesheet" href="style.css" />
+  <!-- Romantic fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-  <div class="bg-blur bg1"></div>
-  <div class="bg-blur bg2"></div>
+  <!-- Floating Hearts -->
+  <div class="hearts"></div>
 
-  <div class="petals-container"></div>
+  <!-- Envelope Cover -->
+  <div class="cover" id="cover">
+    <div class="envelope">
+      <div class="flap"></div>
+      <div class="letter-icon">💌</div>
+    </div>
 
-  <div class="music-player glass">
-    <button id="musicToggle">
-      <div class="vinyl"></div>
-      <span>Play Music</span>
-    </button>
-
-    <audio id="bgMusic" loop>
-      <source src="assets/music.mp3" type="audio/mpeg">
-    </audio>
+    <h1>A Letter For You</h1>
+    <input type="text" id="nameInput" placeholder="Enter your name..." />
+    <button onclick="openLetter()">Open Letter</button>
   </div>
 
-  <button id="themeToggle" class="theme-btn">🌙</button>
+  <!-- Letter Container -->
+  <div class="letter-container hidden" id="letterContainer">
 
-  <section class="hero">
-
-    <div class="bouquet">
-      <div class="flower rose"></div>
-      <div class="flower tulip"></div>
-      <div class="flower daisy"></div>
-      <div class="flower baby"></div>
+    <!-- Page 1 -->
+    <div class="page active">
+      <h2>Dear <span id="userName">You</span>,</h2>
+      <p>
+        I don’t know how to start this letter… but I just want you to know that every moment with you feels special.
+        You bring colors into my life that I never knew existed.
+      </p>
     </div>
 
-    <h1 class="title">For The One I Love</h1>
-    <p class="subtitle">A letter written with every heartbeat.</p>
-
-    <div class="envelope-wrapper">
-      <div class="envelope" id="envelope">
-        <div class="letter">
-          <div class="letter-content">
-
-            <div class="date">May 15, 2026</div>
-
-            <h2>My Dearest Love,</h2>
-
-            <p id="typewriter"></p>
-
-            <div class="signature">
-              Forever Yours,<br />
-              — Your Love
-            </div>
-
-          </div>
-        </div>
-      </div>
+    <!-- Page 2 -->
+    <div class="page">
+      <h2>Memory 💭</h2>
+      <p>
+        There are moments I replay in my mind… your smile, your words, your presence.
+        Somehow, even silence feels warm when it’s connected to you.
+      </p>
     </div>
 
-  </section>
-
-  <section class="gallery-section">
-    <h2 class="gallery-title">Our Memories</h2>
-
-    <div class="gallery">
-      <div class="polaroid"><img src="assets/photo1.jpg"></div>
-      <div class="polaroid"><img src="assets/photo2.jpg"></div>
-      <div class="polaroid"><img src="assets/photo3.jpg"></div>
+    <!-- Page 3 -->
+    <div class="page">
+      <h2>Final Message 💖</h2>
+      <p>
+        No matter where life takes us, I just want you to be happy.
+        And if destiny allows it… I hope our story never ends here.
+      </p>
+      <h3 class="end">— Always yours 💌</h3>
     </div>
-  </section>
 
-  <section class="countdown-section glass">
-    <h2>Until Our Special Day</h2>
-    <div id="countdown"></div>
-  </section>
-
-  <section class="final-section">
-    <button id="surpriseBtn">Open My Final Message</button>
-
-    <div class="final-message hidden">
-      <h2>“You are the most beautiful chapter of my life.”</h2>
-      <p>No matter where life takes us, my heart will always bloom for you.</p>
+    <!-- Navigation -->
+    <div class="controls">
+      <button onclick="prevPage()">⬅ Previous</button>
+      <button onclick="nextPage()">Next ➡</button>
     </div>
-  </section>
 
-  <div id="sparkles"></div>
+  </div>
 
   <script src="script.js"></script>
 </body>

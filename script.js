@@ -1,76 +1,50 @@
-const message = `
-Every moment with you feels like
-a beautiful dream wrapped in warm light.
-...
-`;
+let currentPage = 0;
+const pages = document.querySelectorAll(".page");
 
-const typewriter = document.getElementById("typewriter");
-let index = 0;
+function openLetter() {
+  const name = document.getElementById("nameInput").value || "You";
+  document.getElementById("userName").innerText = name;
 
-function typeText() {
-  if (index < message.length) {
-    typewriter.innerHTML += message.charAt(index);
-    index++;
-    setTimeout(typeText, 45);
+  document.getElementById("cover").style.display = "none";
+  document.getElementById("letterContainer").classList.remove("hidden");
+
+  showPage(0);
+}
+
+// Page navigation
+function showPage(index) {
+  pages.forEach(p => p.classList.remove("active"));
+  pages[index].classList.add("active");
+}
+
+function nextPage() {
+  if (currentPage < pages.length - 1) {
+    currentPage++;
+    showPage(currentPage);
   }
 }
 
-const envelope = document.getElementById("envelope");
-
-envelope.addEventListener("click", () => {
-  envelope.classList.toggle("open");
-
-  if (index === 0) {
-    setTimeout(typeText, 1200);
+function prevPage() {
+  if (currentPage > 0) {
+    currentPage--;
+    showPage(currentPage);
   }
-});
-
-/* MUSIC */
-const music = document.getElementById("bgMusic");
-const musicToggle = document.getElementById("musicToggle");
-const vinyl = document.querySelector(".vinyl");
-
-let isPlaying = false;
-
-musicToggle.addEventListener("click", () => {
-  if (!isPlaying) {
-    music.play();
-    vinyl.classList.add("rotate");
-  } else {
-    music.pause();
-    vinyl.classList.remove("rotate");
-  }
-  isPlaying = !isPlaying;
-});
-
-/* PETALS */
-function createPetal() {
-  const petal = document.createElement("div");
-  petal.classList.add("petal");
-  petal.style.left = Math.random() * window.innerWidth + "px";
-  petal.style.animationDuration = 5 + Math.random() * 5 + "s";
-  document.body.appendChild(petal);
-  setTimeout(() => petal.remove(), 10000);
 }
-setInterval(createPetal, 600);
 
-/* COUNTDOWN */
-const countdown = document.getElementById("countdown");
-const targetDate = new Date("December 25, 2026");
+// Floating hearts generator
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "💖";
 
-setInterval(() => {
-  const now = new Date();
-  const diff = targetDate - now;
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (3 + Math.random() * 3) + "s";
 
-  countdown.innerHTML =
-    Math.floor(diff / 86400000) + "d " +
-    Math.floor(diff / 3600000 % 24) + "h " +
-    Math.floor(diff / 60000 % 60) + "m " +
-    Math.floor(diff / 1000 % 60) + "s";
-}, 1000);
+  document.querySelector(".hearts").appendChild(heart);
 
-/* THEME */
-document.getElementById("themeToggle")
-.addEventListener("click", () => {
-  document.body.classList.toggle("dark");
-});
+  setTimeout(() => {
+    heart.remove();
+  }, 6000);
+}
+
+setInterval(createHeart, 300);

@@ -1,28 +1,3 @@
-/* =========================
-   ROOT VARIABLES
-========================= */
-
-:root {
-  --pink: #ffd6e7;
-  --cream: #fff8f2;
-  --lavender: #e7dcff;
-  --rose-gold: #e7b7a8;
-  --peach: #ffe1cc;
-  --glass: rgba(255,255,255,0.15);
-  --shadow: 0 8px 40px rgba(0,0,0,0.15);
-  --text: #4b3340;
-}
-
-body.dark {
-  --cream: #1e1a24;
-  --text: #ffffff;
-  --glass: rgba(255,255,255,0.08);
-}
-
-/* =========================
-   GLOBAL
-========================= */
-
 * {
   margin: 0;
   padding: 0;
@@ -30,455 +5,164 @@ body.dark {
 }
 
 body {
-  overflow-x: hidden;
-  background:
-    linear-gradient(
-      135deg,
-      var(--pink),
-      var(--cream),
-      var(--lavender)
-    );
-
-  color: var(--text);
-
-  font-family: "Cormorant Garamond", serif;
-
-  min-height: 100vh;
-
-  transition: 0.5s ease;
+  font-family: 'Playfair Display', serif;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(135deg, #ffe6f0, #f3e7ff, #fff);
 }
 
-section {
-  padding: 100px 20px;
-}
-
-.glass {
-  backdrop-filter: blur(18px);
-  background: var(--glass);
-  border: 1px solid rgba(255,255,255,0.2);
-  box-shadow: var(--shadow);
-}
-
-/* =========================
-   BACKGROUND BLOBS
-========================= */
-
-.bg-blur {
+/* Floating Hearts */
+.hearts {
   position: fixed;
-  width: 500px;
-  height: 500px;
-  border-radius: 50%;
-  filter: blur(120px);
-  opacity: 0.4;
-  z-index: -2;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
 }
 
-.bg1 {
-  background: #ff9acb;
-  top: -100px;
-  left: -100px;
+.heart {
+  position: absolute;
+  font-size: 20px;
+  animation: floatUp 6s linear infinite;
+  opacity: 0.6;
 }
 
-.bg2 {
-  background: #c8a8ff;
-  right: -100px;
-  bottom: -100px;
+@keyframes floatUp {
+  from {
+    transform: translateY(100vh);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-10vh);
+    opacity: 0;
+  }
 }
 
-/* =========================
-   HERO
-========================= */
-
-.hero {
-  min-height: 100vh;
+/* COVER */
+.cover {
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  position: relative;
+  align-items: center;
   text-align: center;
-}
-
-.title {
-  font-family: "Great Vibes", cursive;
-  font-size: 5rem;
-  margin-top: 30px;
-  animation: fadeUp 2s ease;
-}
-
-.subtitle {
-  font-size: 1.3rem;
-  margin-top: 10px;
-  opacity: 0.8;
-}
-
-/* =========================
-   FLOWERS
-========================= */
-
-.bouquet {
-  position: relative;
-  width: 220px;
-  height: 220px;
-  animation: float 5s ease-in-out infinite;
-}
-
-.flower {
-  position: absolute;
-  border-radius: 50%;
-  animation: bloom 2s ease forwards;
-}
-
-.rose {
-  width: 100px;
-  height: 100px;
-  background: radial-gradient(circle, #ff4f81, #ffbfd2);
-  left: 50px;
-  top: 20px;
-}
-
-.tulip {
-  width: 80px;
-  height: 80px;
-  background: radial-gradient(circle, #ff9dbb, #ffe4ee);
-  left: 120px;
-  top: 80px;
-}
-
-.daisy {
-  width: 70px;
-  height: 70px;
-  background: radial-gradient(circle, white, #ffe9f3);
-  left: 10px;
-  top: 100px;
-}
-
-.baby {
-  width: 40px;
-  height: 40px;
-  background: radial-gradient(circle, #ffffff, #f3e6ff);
-  left: 160px;
-  top: 20px;
-}
-
-/* =========================
-   ENVELOPE
-========================= */
-
-.envelope-wrapper {
-  margin-top: 60px;
-  perspective: 1000px;
 }
 
 .envelope {
+  width: 140px;
+  height: 100px;
+  background: #fff;
+  border-radius: 10px;
   position: relative;
-  width: 340px;
-  height: 220px;
-  background: linear-gradient(145deg, #f9dbe6, #ffeef4);
-  border-radius: 10px;
-  cursor: pointer;
-  transition: 1s;
-  transform-style: preserve-3d;
-  box-shadow: var(--shadow);
-}
-
-.envelope::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  border-left: 170px solid transparent;
-  border-right: 170px solid transparent;
-  border-top: 120px solid #ffd1e1;
-  transform-origin: top;
-  transition: 1s;
-  z-index: 3;
-}
-
-.envelope.open::before {
-  transform: rotateX(180deg);
-}
-
-.letter {
-  position: absolute;
-  width: 90%;
-  height: 90%;
-  background: rgba(255,255,255,0.9);
-  left: 5%;
-  top: 5%;
-  border-radius: 10px;
-  overflow-y: auto;
-  transform: translateY(40px);
-  transition: 1s ease;
-}
-
-.envelope.open .letter {
-  transform: translateY(-120px);
-}
-
-.letter-content {
-  padding: 30px;
-}
-
-.date {
-  text-align: right;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
   margin-bottom: 20px;
 }
 
-.letter-content h2 {
-  font-family: "Great Vibes", cursive;
-  font-size: 2.5rem;
+.flap {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 70px solid transparent;
+  border-right: 70px solid transparent;
+  border-bottom: 50px solid #ffb6c1;
+  top: -50px;
 }
 
-#typewriter {
-  margin-top: 20px;
-  line-height: 1.8;
-  font-size: 1.2rem;
+.letter-icon {
+  font-size: 40px;
+  position: absolute;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-.signature {
-  margin-top: 40px;
-  font-family: "Great Vibes", cursive;
-  font-size: 2rem;
+h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 40px;
+  color: #d63384;
 }
 
-/* =========================
-   GALLERY
-========================= */
-
-.gallery-title {
-  text-align: center;
-  margin-bottom: 40px;
-  font-size: 3rem;
-}
-
-.gallery {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
-}
-
-.polaroid {
-  width: 260px;
-  background: white;
-  padding: 15px;
+input {
+  margin-top: 15px;
+  padding: 10px;
   border-radius: 10px;
-  transform: rotate(-3deg);
-  transition: 0.4s ease;
-  box-shadow: var(--shadow);
-}
-
-.polaroid:hover {
-  transform: scale(1.05) rotate(2deg);
-}
-
-.polaroid img {
-  width: 100%;
-  border-radius: 8px;
-}
-
-/* =========================
-   COUNTDOWN
-========================= */
-
-.countdown-section {
-  margin: 50px auto;
-  max-width: 700px;
-  text-align: center;
-  border-radius: 25px;
-  padding: 40px;
-}
-
-#countdown {
-  font-size: 2rem;
-  margin-top: 20px;
-}
-
-/* =========================
-   FINAL SECTION
-========================= */
-
-.final-section {
+  border: 1px solid #ccc;
+  width: 200px;
   text-align: center;
 }
 
-#surpriseBtn {
-  padding: 18px 40px;
+button {
+  margin-top: 15px;
+  padding: 10px 20px;
   border: none;
-  border-radius: 40px;
-  background: linear-gradient(
-    135deg,
-    #ff7eb3,
-    #ff758c
-  );
-
+  border-radius: 20px;
+  background: #ff6fa5;
   color: white;
-  font-size: 1.1rem;
   cursor: pointer;
-  transition: 0.4s;
-  box-shadow: var(--shadow);
+  transition: 0.3s;
 }
 
-#surpriseBtn:hover {
-  transform: scale(1.08);
+button:hover {
+  background: #ff3d7f;
+  transform: scale(1.05);
 }
 
-.final-message {
-  margin-top: 50px;
-  animation: fadeUp 1.5s ease;
+/* LETTER */
+.letter-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .hidden {
   display: none;
 }
 
-/* =========================
-   MUSIC PLAYER
-========================= */
-
-.music-player {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  border-radius: 50px;
-  padding: 12px 20px;
-  z-index: 999;
+.page {
+  display: none;
+  max-width: 500px;
+  padding: 30px;
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  animation: fade 0.6s ease;
 }
 
-.music-player button {
-  border: none;
-  background: transparent;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  cursor: pointer;
+.page.active {
+  display: block;
 }
 
-.vinyl {
-  width: 40px;
-  height: 40px;
-  background: black;
-  border-radius: 50%;
-  position: relative;
+@keyframes fade {
+  from {opacity: 0; transform: translateY(10px);}
+  to {opacity: 1; transform: translateY(0);}
 }
 
-.vinyl::before {
-  content: "";
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  background: white;
-  border-radius: 50%;
-  top: 14px;
-  left: 14px;
+h2 {
+  font-family: 'Dancing Script', cursive;
+  color: #c9184a;
+  margin-bottom: 10px;
 }
 
-.rotate {
-  animation: spin 2s linear infinite;
+p {
+  font-size: 18px;
+  color: #444;
+  line-height: 1.6;
 }
 
-/* =========================
-   THEME BUTTON
-========================= */
-
-.theme-btn {
-  position: fixed;
-  left: 20px;
-  top: 20px;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: none;
-  font-size: 1.2rem;
-  cursor: pointer;
-  z-index: 999;
+.end {
+  margin-top: 20px;
+  color: #d63384;
 }
 
-/* =========================
-   PETALS
-========================= */
-
-.petal {
-  position: fixed;
-  width: 15px;
-  height: 15px;
-  background: pink;
-  border-radius: 50% 0 50% 50%;
-  opacity: 0.7;
-  animation: fall linear forwards;
+/* Controls */
+.controls {
+  margin-top: 20px;
 }
 
-/* =========================
-   ANIMATIONS
-========================= */
-
-@keyframes bloom {
-  from {
-    transform: scale(0);
-    opacity: 0;
-  }
-
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-@keyframes float {
-  0%,100% {
-    transform: translateY(0px);
-  }
-
-  50% {
-    transform: translateY(-15px);
-  }
-}
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes fall {
-  to {
-    transform: translateY(120vh) rotate(360deg);
-  }
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media (max-width: 768px) {
-
-  .title {
-    font-size: 3.5rem;
-  }
-
-  .envelope {
-    width: 90vw;
-  }
-
-  .gallery {
-    flex-direction: column;
-    align-items: center;
-  }
-
+.controls button {
+  margin: 0 10px;
 }
