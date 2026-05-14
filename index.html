@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Virtual Love Letter</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <div class="bg-blur bg1"></div>
+  <div class="bg-blur bg2"></div>
+
+  <div class="petals-container"></div>
+
+  <div class="music-player glass">
+    <button id="musicToggle">
+      <div class="vinyl"></div>
+      <span>Play Music</span>
+    </button>
+
+    <audio id="bgMusic" loop>
+      <source src="assets/music.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <button id="themeToggle" class="theme-btn">🌙</button>
+
+  <section class="hero">
+
+    <div class="bouquet">
+      <div class="flower rose"></div>
+      <div class="flower tulip"></div>
+      <div class="flower daisy"></div>
+      <div class="flower baby"></div>
+    </div>
+
+    <h1 class="title">For The One I Love</h1>
+    <p class="subtitle">A letter written with every heartbeat.</p>
+
+    <div class="envelope-wrapper">
+      <div class="envelope" id="envelope">
+        <div class="letter">
+          <div class="letter-content">
+
+            <div class="date">May 15, 2026</div>
+
+            <h2>My Dearest Love,</h2>
+
+            <p id="typewriter"></p>
+
+            <div class="signature">
+              Forever Yours,<br />
+              — Your Love
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="gallery-section">
+    <h2 class="gallery-title">Our Memories</h2>
+
+    <div class="gallery">
+      <div class="polaroid"><img src="assets/photo1.jpg"></div>
+      <div class="polaroid"><img src="assets/photo2.jpg"></div>
+      <div class="polaroid"><img src="assets/photo3.jpg"></div>
+    </div>
+  </section>
+
+  <section class="countdown-section glass">
+    <h2>Until Our Special Day</h2>
+    <div id="countdown"></div>
+  </section>
+
+  <section class="final-section">
+    <button id="surpriseBtn">Open My Final Message</button>
+
+    <div class="final-message hidden">
+      <h2>“You are the most beautiful chapter of my life.”</h2>
+      <p>No matter where life takes us, my heart will always bloom for you.</p>
+    </div>
+  </section>
+
+  <div id="sparkles"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
