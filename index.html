@@ -1,33 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Simple Virtual Letter 💌</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Virtual Flower Bouquet</title>
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="container">
+  <div class="background-glow"></div>
 
-  <h1>💌 A Simple Letter</h1>
+  <div class="app">
 
-  <button onclick="openLetter()">Open Letter</button>
+    <!-- LEFT PANEL -->
+    <aside class="flower-panel" id="flowerPanel">
 
-  <div id="letter" class="letter hidden">
-    <h2>Dear You,</h2>
-    <p>
-      I just wanted to say thank you for being part of my life.
-      You mean more than you know.
-    </p>
-    <p>
-      I hope you are always happy and doing well.
-    </p>
-    <p class="end">— From me 💖</p>
+      <h1>🌸 Virtual Bouquet</h1>
+      <p>Create your own flower arrangement</p>
+
+      <div class="flower-options">
+
+        <button class="flower-btn rose" data-flower="rose">
+          🌹 Rose
+        </button>
+
+        <button class="flower-btn tulip" data-flower="tulip">
+          🌷 Tulip
+        </button>
+
+        <button class="flower-btn daisy" data-flower="daisy">
+          🌼 Daisy
+        </button>
+
+        <button class="flower-btn sunflower" data-flower="sunflower">
+          🌻 Sunflower
+        </button>
+
+        <button class="flower-btn leaf" data-flower="leaf">
+          🍃 Leaf
+        </button>
+
+      </div>
+
+      <div class="message-box">
+
+        <textarea
+          id="giftMessage"
+          placeholder="Write your gift message here..."
+        ></textarea>
+
+      </div>
+
+      <div class="controls">
+
+        <button id="wrapBtn" class="primary-btn">
+          Wrap Bouquet
+        </button>
+
+        <button id="resetBtn" class="secondary-btn">
+          Reset
+        </button>
+
+      </div>
+
+      <p class="limit-text">
+        Maximum bouquet size: 20 flowers
+      </p>
+
+    </aside>
+
+    <!-- MAIN -->
+    <main class="bouquet-area">
+
+      <div class="bouquet-wrapper">
+
+        <div class="bouquet" id="bouquet">
+
+          <!-- FLOWERS GENERATED HERE -->
+
+          <div class="vase"></div>
+          <div class="paper-wrap"></div>
+
+        </div>
+
+      </div>
+
+    </main>
+
   </div>
 
-</div>
+  <!-- FINAL CARD -->
+  <div class="final-card hidden" id="finalCard">
 
-<script src="script.js"></script>
+    <div class="card-content">
+
+      <h2>💐 Your Wrapped Bouquet</h2>
+
+      <div class="final-bouquet" id="finalBouquet"></div>
+
+      <div class="final-message" id="finalMessage"></div>
+
+      <button id="createAgain">
+        Create Another Bouquet
+      </button>
+
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+
 </body>
 </html>
