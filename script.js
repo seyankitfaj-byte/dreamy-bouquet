@@ -1,46 +1,48 @@
-const bouquet = document.getElementById("bouquet");
+const bouquetCanvas =
+  document.getElementById("bouquetCanvas");
 
-const flowerButtons =
+const finalCanvas =
+  document.getElementById("finalCanvas");
+
+const buttons =
   document.querySelectorAll(".flower-btn");
 
 const resetBtn =
   document.getElementById("resetBtn");
 
-const wrapBtn =
-  document.getElementById("wrapBtn");
+const giftBtn =
+  document.getElementById("giftBtn");
 
-const finalCard =
-  document.getElementById("finalCard");
+const closeGift =
+  document.getElementById("closeGift");
 
-const finalBouquet =
-  document.getElementById("finalBouquet");
+const giftOverlay =
+  document.getElementById("giftOverlay");
 
-const finalMessage =
-  document.getElementById("finalMessage");
+const finalNote =
+  document.getElementById("finalNote");
 
-const createAgain =
-  document.getElementById("createAgain");
+const noteInput =
+  document.getElementById("noteInput");
 
-const flowerPanel =
-  document.getElementById("flowerPanel");
-
-const MAX_FLOWERS = 20;
+const MAX_FLOWERS = 15;
 
 let flowerCount = 0;
 
-/* ADD FLOWERS */
+/* FLOWER BUTTONS */
 
-flowerButtons.forEach(button => {
+buttons.forEach(button => {
 
   button.addEventListener("click", () => {
 
     if(flowerCount >= MAX_FLOWERS){
 
-      alert("Bouquet is full 🌸");
+      alert("Bouquet is full 💐");
       return;
     }
 
-    const type = button.dataset.flower;
+    const type =
+      button.dataset.flower;
 
     createFlower(type);
 
@@ -52,48 +54,50 @@ flowerButtons.forEach(button => {
 
 function createFlower(type){
 
-  const flower =
+  const assembly =
     document.createElement("div");
 
-  flower.classList.add("flower");
+  assembly.classList.add(
+    "flower-assembly"
+  );
+
+  /* CLUSTERED POSITION */
+
+  const x =
+    25 + Math.random() * 50;
+
+  const y =
+    55 + Math.random() * 40;
+
+  const rotation =
+    Math.random() * 30 - 15;
+
+  const scale =
+    0.8 + Math.random() * 0.3;
+
+  assembly.style.left = `${x}%`;
+
+  assembly.style.bottom = `${y}px`;
+
+  assembly.style.setProperty(
+    "--rotate",
+    `${rotation}deg`
+  );
+
+  assembly.style.setProperty(
+    "--scale",
+    scale
+  );
+
+  /* STEM */
 
   const stem =
     document.createElement("div");
 
   stem.classList.add("stem");
 
-  const head =
-    document.createElement("div");
-
-  head.classList.add("flower-head");
-
-  /* RANDOMIZATION */
-
-  const randomX =
-    Math.random() * 240 - 120;
-
-  const randomY =
-    Math.random() * 100;
-
-  const randomRotate =
-    Math.random() * 40 - 20;
-
-  const randomScale =
-    0.75 + Math.random() * 0.5;
-
   const stemHeight =
-    140 + Math.random() * 160;
-
-  flower.style.left =
-    `calc(50% + ${randomX}px)`;
-
-  flower.style.bottom =
-    `${150 + randomY}px`;
-
-  flower.style.transform =
-    `translateX(-50%)
-    rotate(${randomRotate}deg)
-    scale(${randomScale})`;
+    120 + Math.random() * 60;
 
   stem.style.height =
     `${stemHeight}px`;
@@ -101,29 +105,27 @@ function createFlower(type){
   stem.style.bottom =
     `-${stemHeight}px`;
 
-  /* LEAF 1 */
+  /* LEAVES */
 
   const leaf1 =
     document.createElement("div");
 
-  leaf1.classList.add("leaf-shape");
+  leaf1.classList.add("leaf");
 
-  leaf1.style.left = "-25px";
+  leaf1.style.left = "-20px";
 
   leaf1.style.top =
-    `${stemHeight * 0.35}px`;
+    `${stemHeight * 0.3}px`;
 
   leaf1.style.transform =
     "rotate(-35deg)";
 
-  /* LEAF 2 */
-
   const leaf2 =
     document.createElement("div");
 
-  leaf2.classList.add("leaf-shape");
+  leaf2.classList.add("leaf");
 
-  leaf2.style.right = "-25px";
+  leaf2.style.right = "-20px";
 
   leaf2.style.top =
     `${stemHeight * 0.6}px`;
@@ -134,89 +136,65 @@ function createFlower(type){
   stem.appendChild(leaf1);
   stem.appendChild(leaf2);
 
-  /* FLOWER TYPES */
+  /* FLOWER HEAD */
 
-  switch(type){
+  const flowerHead =
+    document.createElement("div");
 
-    case "rose":
-      head.classList.add("rose-head");
-      break;
+  flowerHead.classList.add(
+    "flower-head"
+  );
 
-    case "tulip":
-      head.classList.add("tulip-head");
-      break;
+  const bloom =
+    document.createElement("div");
 
-    case "daisy":
-      head.classList.add("daisy-head");
-      break;
+  bloom.classList.add(type);
 
-    case "sunflower":
-      head.classList.add("sunflower-head");
-      break;
+  flowerHead.appendChild(bloom);
 
-    case "leaf":
-      head.classList.add("single-leaf");
-      break;
-  }
+  assembly.appendChild(flowerHead);
 
-  flower.appendChild(head);
-  flower.appendChild(stem);
+  assembly.appendChild(stem);
 
-  bouquet.appendChild(flower);
+  bouquetCanvas.appendChild(assembly);
 }
 
 /* RESET */
 
 resetBtn.addEventListener("click", () => {
 
-  const flowers =
-    bouquet.querySelectorAll(".flower");
-
-  flowers.forEach(flower => {
-    flower.remove();
-  });
+  bouquetCanvas.innerHTML = "";
 
   flowerCount = 0;
 });
 
-/* WRAP */
+/* GIFT IT */
 
-wrapBtn.addEventListener("click", () => {
+giftBtn.addEventListener("click", () => {
 
   if(flowerCount === 0){
 
-    alert("Add some flowers first 🌸");
-
+    alert("Add flowers first 💐");
     return;
   }
 
-  finalBouquet.innerHTML =
-    bouquet.innerHTML;
+  finalCanvas.innerHTML =
+    bouquetCanvas.innerHTML;
 
-  const message =
-    document
-      .getElementById("giftMessage")
-      .value
-      .trim();
+  finalNote.textContent =
+    noteInput.value.trim() ||
+    "A bouquet crafted especially for you.";
 
-  finalMessage.innerText =
-    message ||
-    "A beautiful bouquet made with love 💐";
-
-  finalCard.classList.remove("hidden");
-
-  flowerPanel.style.opacity = "0";
-
-  flowerPanel.style.pointerEvents = "none";
+  giftOverlay.classList.remove(
+    "hidden"
+  );
 });
 
-/* CREATE AGAIN */
+/* CLOSE */
 
-createAgain.addEventListener("click", () => {
+closeGift.addEventListener("click", () => {
 
-  finalCard.classList.add("hidden");
-
-  flowerPanel.style.opacity = "1";
-
-  flowerPanel.style.pointerEvents = "all";
+  giftOverlay.classList.add(
+    "hidden"
+  );
 });

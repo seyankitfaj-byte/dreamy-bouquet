@@ -5,57 +5,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Virtual Flower Bouquet</title>
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
-  <div class="background-glow"></div>
+  <div class="app-shell">
 
-  <div class="app">
+    <!-- UI PANEL -->
+    <section class="control-panel">
 
-    <!-- LEFT PANEL -->
-    <aside class="flower-panel" id="flowerPanel">
+      <h1>Virtual Bouquet</h1>
+      <p class="subtitle">
+        Design a handcrafted digital flower arrangement
+      </p>
 
-      <h1>🌸 Virtual Bouquet</h1>
-      <p>Create your own flower arrangement</p>
+      <div class="flower-toolbar">
 
-      <div class="flower-options">
-
-        <button class="flower-btn rose" data-flower="rose">
-          🌹 Rose
+        <button class="flower-btn sunflower-btn"
+          data-flower="sunflower">
+          Sunflower
         </button>
 
-        <button class="flower-btn tulip" data-flower="tulip">
-          🌷 Tulip
+        <button class="flower-btn tulip-btn"
+          data-flower="tulip">
+          Tulip
         </button>
 
-        <button class="flower-btn daisy" data-flower="daisy">
-          🌼 Daisy
-        </button>
-
-        <button class="flower-btn sunflower" data-flower="sunflower">
-          🌻 Sunflower
-        </button>
-
-        <button class="flower-btn leaf" data-flower="leaf">
-          🍃 Leaf
+        <button class="flower-btn daisy-btn"
+          data-flower="daisy">
+          Daisy
         </button>
 
       </div>
 
-      <div class="message-box">
+      <textarea
+        id="noteInput"
+        placeholder="Write a heartfelt note..."
+      ></textarea>
 
-        <textarea
-          id="giftMessage"
-          placeholder="Write your gift message here..."
-        ></textarea>
+      <div class="actions">
 
-      </div>
-
-      <div class="controls">
-
-        <button id="wrapBtn" class="primary-btn">
-          Wrap Bouquet
+        <button id="giftBtn" class="primary-btn">
+          Gift It
         </button>
 
         <button id="resetBtn" class="secondary-btn">
@@ -64,46 +55,62 @@
 
       </div>
 
-      <p class="limit-text">
-        Maximum bouquet size: 20 flowers
-      </p>
+      <div class="limit-label">
+        Maximum flowers: 15
+      </div>
 
-    </aside>
+    </section>
 
-    <!-- MAIN -->
-    <main class="bouquet-area">
+    <!-- BOUQUET SECTION -->
+    <section class="bouquet-stage">
 
-      <div class="bouquet-wrapper">
+      <div class="bouquet-card">
 
-        <div class="bouquet" id="bouquet">
+        <!-- LAYER 1 -->
+        <div class="card-bg"></div>
 
-          <!-- FLOWERS GENERATED HERE -->
+        <!-- LAYER 2 -->
+        <div class="wrapper-back"></div>
 
-          <div class="vase"></div>
-          <div class="paper-wrap"></div>
+        <!-- LAYER 3 -->
+        <div class="bouquet-canvas" id="bouquetCanvas"></div>
 
-        </div>
+        <!-- LAYER 4 -->
+        <div class="wrapper-front"></div>
 
       </div>
 
-    </main>
+    </section>
 
   </div>
 
-  <!-- FINAL CARD -->
-  <div class="final-card hidden" id="finalCard">
+  <!-- FINAL GIFT CARD -->
+  <div class="gift-overlay hidden" id="giftOverlay">
 
-    <div class="card-content">
+    <div class="gift-card">
 
-      <h2>💐 Your Wrapped Bouquet</h2>
+      <div class="gift-bouquet">
+        <div class="bouquet-card final-copy">
+          <div class="card-bg"></div>
+          <div class="wrapper-back"></div>
+          <div class="bouquet-canvas" id="finalCanvas"></div>
+          <div class="wrapper-front"></div>
+        </div>
+      </div>
 
-      <div class="final-bouquet" id="finalBouquet"></div>
+      <div class="gift-note">
 
-      <div class="final-message" id="finalMessage"></div>
+        <h2>For You 💐</h2>
 
-      <button id="createAgain">
-        Create Another Bouquet
-      </button>
+        <p id="finalNote">
+          Handmade with love.
+        </p>
+
+        <button id="closeGift">
+          Create Another
+        </button>
+
+      </div>
 
     </div>
 
