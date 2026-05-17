@@ -1,161 +1,87 @@
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-body{
-  min-height:100vh;
-
-  display:flex;
-  justify-content:center;
-  align-items:center;
-
-  padding:30px;
-
-  font-family:
-    "Segoe UI",
-    sans-serif;
-
-  background:
-    radial-gradient(circle at top left,
-    #ffe4ef,
-    transparent 30%),
-
-    radial-gradient(circle at bottom right,
-    #fff2cf,
-    transparent 30%),
-
-    linear-gradient(
-      135deg,
-      #fff7fb,
-      #eef3ff
-    );
-
-  overflow:hidden;
-}
-
-/* APP */
-
-.app-shell{
-  display:flex;
-  gap:40px;
-  align-items:center;
-  flex-wrap:wrap;
-  justify-content:center;
-}
-
-/* UI PANEL */
-
-.control-panel{
+.sidebar{
   width:320px;
+}
 
-  padding:28px;
-
-  border-radius:28px;
-
-  background:
-    rgba(255,255,255,0.55);
-
-  backdrop-filter:blur(16px);
+.panel{
+  background:white;
+  border-radius:20px;
+  padding:22px;
+  margin-bottom:20px;
 
   box-shadow:
-    0 20px 45px rgba(0,0,0,0.08);
-
-  position:relative;
-  z-index:5;
+  0 10px 30px rgba(0,0,0,.08);
 }
 
-.control-panel h1{
-  font-size:2rem;
-  margin-bottom:10px;
+.panel h3{
+  font-size:13px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+
+  margin-bottom:18px;
+
+  color:#b07a17;
 }
 
-.subtitle{
-  color:#666;
-  line-height:1.5;
-  margin-bottom:24px;
-}
-
-.flower-toolbar{
+.flower-grid{
   display:grid;
+  grid-template-columns:1fr 1fr;
   gap:14px;
 }
 
 .flower-btn{
   border:none;
-  cursor:pointer;
-
-  padding:14px;
+  background:#fffaf5;
 
   border-radius:18px;
 
-  font-size:1rem;
-  font-weight:700;
+  padding:18px 12px;
 
-  transition:0.25s ease;
+  cursor:pointer;
 
-  background:white;
+  font-size:32px;
 
-  box-shadow:
-    0 10px 25px rgba(0,0,0,0.08);
+  transition:.25s;
+}
+
+.flower-btn span{
+  display:block;
+
+  margin-top:8px;
+
+  font-size:12px;
 }
 
 .flower-btn:hover{
-  transform:
-    translateY(-3px)
-    scale(1.02);
-}
+  transform:translateY(-4px);
 
-.sunflower-btn:hover{
-  background:#ffe28d;
+  box-shadow:
+  0 10px 20px rgba(0,0,0,.08);
 }
-
-.tulip-btn:hover{
-  background:#ffc7d7;
-}
-
-.daisy-btn:hover{
-  background:#fff5cf;
-}
-
-/* TEXTAREA */
 
 textarea{
   width:100%;
-  min-height:130px;
-
-  margin-top:24px;
+  min-height:120px;
 
   border:none;
-  outline:none;
+
+  background:#faf7f2;
+
+  border-radius:16px;
+
+  padding:16px;
 
   resize:none;
 
-  padding:18px;
-
-  border-radius:20px;
-
-  background:
-    rgba(255,255,255,0.8);
-
-  font-size:1rem;
-
-  box-shadow:
-    inset 0 4px 10px rgba(0,0,0,0.05);
+  font-family:inherit;
 }
-
-/* ACTIONS */
 
 .actions{
   display:flex;
-  gap:12px;
-  margin-top:22px;
+  gap:14px;
 }
 
-.primary-btn,
-.secondary-btn,
-#closeGift{
+.clear-btn,
+.gift-btn{
 
   flex:1;
 
@@ -163,435 +89,18 @@ textarea{
 
   padding:14px;
 
-  border-radius:18px;
-
-  font-weight:700;
+  border-radius:16px;
 
   cursor:pointer;
 
-  transition:0.25s ease;
+  font-weight:600;
 }
 
-.primary-btn{
-  background:
-    linear-gradient(
-      135deg,
-      #ff6ca8,
-      #ff8f96
-    );
+.clear-btn{
+  background:#f2ebe3;
+}
 
+.gift-btn{
+  background:#2d7a52;
   color:white;
-}
-
-.secondary-btn{
-  background:#ececec;
-}
-
-#closeGift{
-  background:
-    linear-gradient(
-      135deg,
-      #7b7bff,
-      #9696ff
-    );
-
-  color:white;
-
-  margin-top:20px;
-}
-
-.primary-btn:hover,
-.secondary-btn:hover,
-#closeGift:hover{
-  transform:
-    translateY(-2px);
-}
-
-.limit-label{
-  margin-top:18px;
-  font-size:0.9rem;
-  opacity:0.6;
-}
-
-/* BOUQUET STAGE */
-
-.bouquet-stage{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-
-/* MAIN CARD */
-
-.bouquet-card{
-  width:350px;
-  height:400px;
-
-  position:relative;
-
-  overflow:hidden;
-
-  border-radius:32px;
-
-  box-shadow:
-    0 30px 60px rgba(0,0,0,0.12);
-}
-
-/* LAYER 1 */
-
-.card-bg{
-  position:absolute;
-  inset:0;
-
-  z-index:1;
-
-  background:
-    linear-gradient(
-      180deg,
-      #fffafc,
-      #fff2e4
-    );
-}
-
-/* LAYER 2 */
-
-.wrapper-back{
-  position:absolute;
-
-  bottom:-10px;
-  left:50%;
-
-  transform:translateX(-50%);
-
-  width:270px;
-  height:260px;
-
-  z-index:2;
-
-  background:
-    linear-gradient(
-      135deg,
-      #ffe1ea,
-      #fff9f1
-    );
-
-  clip-path:
-    polygon(
-      50% 100%,
-      0 0,
-      100% 0
-    );
-
-  filter:
-    drop-shadow(
-      0 15px 20px rgba(0,0,0,0.08)
-    );
-}
-
-/* LAYER 3 */
-
-.bouquet-canvas{
-  position:absolute;
-  inset:0;
-
-  z-index:3;
-
-  overflow:hidden;
-}
-
-/* LAYER 4 */
-
-.wrapper-front{
-  position:absolute;
-
-  bottom:-20px;
-  left:50%;
-
-  transform:translateX(-50%);
-
-  width:300px;
-  height:210px;
-
-  z-index:4;
-
-  background:
-    linear-gradient(
-      135deg,
-      #ffd3df,
-      #fff6e8
-    );
-
-  clip-path:
-    polygon(
-      50% 100%,
-      0 0,
-      100% 0
-    );
-
-  box-shadow:
-    0 -5px 20px rgba(255,255,255,0.7) inset;
-}
-
-/* FLOWER ASSEMBLY */
-
-.flower-assembly{
-  position:absolute;
-
-  bottom:90px;
-
-  left:50%;
-
-  transform-origin:
-    bottom center;
-
-  animation:bloom 0.45s ease forwards;
-}
-
-/* STEM */
-
-.stem{
-  position:absolute;
-
-  bottom:-150px;
-  left:50%;
-
-  width:4px;
-
-  border-radius:30px;
-
-  transform:
-    translateX(-50%);
-
-  background:
-    linear-gradient(
-      #65c76b,
-      #2e7a36
-    );
-}
-
-/* LEAF */
-
-.leaf{
-  position:absolute;
-
-  width:22px;
-  height:12px;
-
-  background:
-    linear-gradient(
-      #5fd46b,
-      #31853a
-    );
-
-  border-radius:
-    100% 0;
-
-  opacity:0.95;
-}
-
-/* FLOWER HEAD */
-
-.flower-head{
-  position:absolute;
-
-  left:50%;
-  top:0;
-
-  transform:
-    translateX(-50%);
-}
-
-/* SUNFLOWER */
-
-.sunflower{
-  width:72px;
-  height:72px;
-
-  border-radius:50%;
-
-  background:
-    radial-gradient(
-      circle,
-      #4d2d00 26%,
-      #ffca2f 28%
-    );
-
-  border:10px dotted #ffd84d;
-
-  box-shadow:
-    0 0 20px rgba(255,196,0,0.25);
-}
-
-/* TULIP */
-
-.tulip{
-  width:46px;
-  height:56px;
-
-  background:
-    linear-gradient(
-      #ff87ae,
-      #ff5c84
-    );
-
-  border-radius:
-    50% 50% 12px 12px;
-
-  clip-path:
-    polygon(
-      0 100%,
-      0 35%,
-      20% 0,
-      50% 22%,
-      80% 0,
-      100% 35%,
-      100% 100%
-    );
-}
-
-/* DAISY */
-
-.daisy{
-  width:74px;
-  height:74px;
-
-  border-radius:50%;
-
-  position:relative;
-
-  background:
-    repeating-conic-gradient(
-      white 0deg 18deg,
-      transparent 18deg 36deg
-    );
-}
-
-.daisy::after{
-  content:"";
-
-  position:absolute;
-
-  width:28px;
-  height:28px;
-
-  background:#ffd23f;
-
-  border-radius:50%;
-
-  top:50%;
-  left:50%;
-
-  transform:
-    translate(-50%,-50%);
-}
-
-/* ANIMATION */
-
-@keyframes bloom{
-
-  from{
-    opacity:0;
-
-    transform:
-      scale(0)
-      rotate(var(--rotate));
-  }
-
-  to{
-    opacity:1;
-
-    transform:
-      scale(var(--scale))
-      rotate(var(--rotate));
-  }
-}
-
-/* GIFT OVERLAY */
-
-.gift-overlay{
-  position:fixed;
-  inset:0;
-
-  background:
-    rgba(0,0,0,0.45);
-
-  backdrop-filter:blur(8px);
-
-  display:flex;
-  justify-content:center;
-  align-items:center;
-
-  padding:20px;
-
-  z-index:50;
-}
-
-.gift-card{
-  width:900px;
-  max-width:100%;
-
-  display:flex;
-  flex-wrap:wrap;
-  gap:25px;
-
-  align-items:center;
-  justify-content:center;
-
-  background:white;
-
-  padding:30px;
-
-  border-radius:32px;
-
-  box-shadow:
-    0 30px 70px rgba(0,0,0,0.18);
-}
-
-.gift-note{
-  width:280px;
-}
-
-.gift-note h2{
-  font-size:2rem;
-  margin-bottom:15px;
-}
-
-.gift-note p{
-  line-height:1.8;
-  color:#555;
-  white-space:pre-wrap;
-}
-
-.hidden{
-  display:none;
-}
-
-/* RESPONSIVE */
-
-@media(max-width:850px){
-
-  .app-shell{
-    flex-direction:column;
-  }
-
-  .control-panel{
-    width:100%;
-    max-width:450px;
-  }
-}
-
-@media(max-width:500px){
-
-  body{
-    padding:18px;
-  }
-
-  .bouquet-card{
-    width:320px;
-    height:390px;
-  }
-
-  .gift-card{
-    padding:20px;
-  }
 }

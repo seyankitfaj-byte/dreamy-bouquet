@@ -3,120 +3,103 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Virtual Flower Bouquet</title>
+  <title>Bloom Studio</title>
 
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/bouquet.css">
+  <link rel="stylesheet" href="css/flowers.css">
+  <link rel="stylesheet" href="css/responsive.css">
 </head>
+
 <body>
 
-  <div class="app-shell">
+<header class="header">
+  <h1><span>Bloom</span> Studio</h1>
+  <p>Virtual Bouquet Maker</p>
+</header>
 
-    <!-- UI PANEL -->
-    <section class="control-panel">
+<main class="layout">
 
-      <h1>Virtual Bouquet</h1>
-      <p class="subtitle">
-        Design a handcrafted digital flower arrangement
-      </p>
+  <!-- CONTROL PANEL -->
+  <aside class="sidebar">
 
-      <div class="flower-toolbar">
+    <div class="panel">
+      <h3>Choose Flowers</h3>
 
-        <button class="flower-btn sunflower-btn"
-          data-flower="sunflower">
-          Sunflower
+      <div class="flower-grid">
+
+        <button class="flower-btn" onclick="addFlower('sunflower')">
+          🌻
+          <span>Sunflower</span>
         </button>
 
-        <button class="flower-btn tulip-btn"
-          data-flower="tulip">
-          Tulip
+        <button class="flower-btn" onclick="addFlower('tulip')">
+          🌷
+          <span>Tulip</span>
         </button>
 
-        <button class="flower-btn daisy-btn"
-          data-flower="daisy">
-          Daisy
+        <button class="flower-btn" onclick="addFlower('daisy')">
+          🌼
+          <span>Daisy</span>
+        </button>
+
+        <button class="flower-btn" onclick="addFlower('leaf')">
+          🍃
+          <span>Leaf</span>
         </button>
 
       </div>
+    </div>
+
+    <div class="panel">
+      <h3>Gift Note</h3>
 
       <textarea
-        id="noteInput"
-        placeholder="Write a heartfelt note..."
+        id="giftNote"
+        placeholder="Write your message..."
       ></textarea>
+    </div>
 
-      <div class="actions">
+    <div class="actions">
+      <button class="clear-btn" onclick="resetBouquet()">
+        Clear
+      </button>
 
-        <button id="giftBtn" class="primary-btn">
-          Gift It
-        </button>
+      <button class="gift-btn" onclick="wrapBouquet()">
+        Wrap Bouquet
+      </button>
+    </div>
 
-        <button id="resetBtn" class="secondary-btn">
-          Reset
-        </button>
+  </aside>
 
-      </div>
+  <!-- BOUQUET PREVIEW -->
+  <section class="preview">
 
-      <div class="limit-label">
-        Maximum flowers: 15
-      </div>
+    <div class="bouquet-scene">
 
-    </section>
+      <div class="bouquet-glow"></div>
 
-    <!-- BOUQUET SECTION -->
-    <section class="bouquet-stage">
+      <div class="wrapper-back"></div>
 
-      <div class="bouquet-card">
+      <div id="bouquetCanvas" class="bouquet-canvas"></div>
 
-        <!-- LAYER 1 -->
-        <div class="card-bg"></div>
+      <div class="wrapper-front"></div>
 
-        <!-- LAYER 2 -->
-        <div class="wrapper-back"></div>
-
-        <!-- LAYER 3 -->
-        <div class="bouquet-canvas" id="bouquetCanvas"></div>
-
-        <!-- LAYER 4 -->
-        <div class="wrapper-front"></div>
-
-      </div>
-
-    </section>
-
-  </div>
-
-  <!-- FINAL GIFT CARD -->
-  <div class="gift-overlay hidden" id="giftOverlay">
-
-    <div class="gift-card">
-
-      <div class="gift-bouquet">
-        <div class="bouquet-card final-copy">
-          <div class="card-bg"></div>
-          <div class="wrapper-back"></div>
-          <div class="bouquet-canvas" id="finalCanvas"></div>
-          <div class="wrapper-front"></div>
-        </div>
-      </div>
-
-      <div class="gift-note">
-
-        <h2>For You 💐</h2>
-
-        <p id="finalNote">
-          Handmade with love.
-        </p>
-
-        <button id="closeGift">
-          Create Another
-        </button>
-
-      </div>
+      <div class="ribbon"></div>
 
     </div>
 
-  </div>
+  </section>
 
-  <script src="script.js"></script>
+</main>
+
+<script src="js/flowers.js"></script>
+<script src="js/bouquet.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/app.js"></script>
 
 </body>
 </html>
